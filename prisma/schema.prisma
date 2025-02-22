@@ -1,0 +1,63 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            Int            @id @default(autoincrement())
+  username      String         @unique
+  passwordHash  String
+  megaAccounts  MegaAccount[]
+  folders       Folder[]
+  files         File[]
+}
+
+model MegaAccount {
+  id                Int     @id @default(autoincrement())
+  userId            Int
+  user              User    @relation(fields: [userId], references: [id])
+  megaEmail         String
+  megaPasswordEncrypted String
+  availableSpace    BigInt  @default(21474836480) // 20GB in bytes
+  fileChunks        FileChunk[]
+}
+
+model Folder {
+  id            Int     @id @default(autoincrement())
+  userId        Int
+  user          User    @relation(fields: [userId], references: [id])
+  parentFolderId Int?    @map("parent_folder_id")
+  parentFolder  Folder? @relation("FolderToFolder", fields: [parentFolderId], references: [id])
+  name          String
+  path          String  @unique
+  files         File[]
+  subFolders    Folder[] @relation("FolderToFolder")
+}
+
+model File {
+  id            Int     @id @default(autoincrement())
+  userId        Int
+  user          User    @relation(fields: [userId], references: [id])
+  folderId      Int?
+  folder        Folder? @relation(fields: [folderId], references: [id])
+  name          String
+  size          BigInt
+  path          String  @unique
+  isChunked     Boolean @default(false)
+  chunks        FileChunk[]
+}
+
+model FileChunk {
+  id            Int     @id @default(autoincrement())
+  fileId        Int
+  file          File    @relation(fields: [fileId], references: [id])
+  accountId     Int
+  account       MegaAccount @relation(fields: [accountId], references: [id])
+  chunkOrder    Int
+  megaFileId    String
+  chunkSize     BigInt
+}
