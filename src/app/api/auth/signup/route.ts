@@ -5,11 +5,16 @@ import { encrypt } from '@/lib/crypto';
 
 // Replace with real Mega credentials
 const PRE_CREATED_MEGA_ACCOUNTS = [
-  { email: 'mega1@example.com', password: 'mega_pass_1' },
-  { email: 'mega2@example.com', password: 'mega_pass_2' },
-  { email: 'mega3@example.com', password: 'mega_pass_3' },
-  { email: 'mega4@example.com', password: 'mega_pass_4' },
-  { email: 'mega5@example.com', password: 'mega_pass_5' },
+  { email: 'ysuni4@edny.net', password: 'Study@123' },
+  { email: 'buv55@edny.net', password: 'Study@123' },
+  { email: 'jbk8a@edny.net', password: 'Study@123' },
+  { email: 'sezsec@edny.net', password: 'Study@123' },
+  { email: 'areklu@edny.net', password: 'Study@123' },
+  { email: 'at9q2@edny.net', password: 'Study@123' },
+  { email: 'r2nwir@edny.net', password: 'Study@123' },
+  { email: 'urac0p@edny.net', password: 'Study@123' },
+  { email: 'jaez9h@edny.net', password: 'Study@123' },
+  { email: 'm574z@edny.net', password: 'Study@123' },
 ];
 
 export async function POST(request: Request) {
