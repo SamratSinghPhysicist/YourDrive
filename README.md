@@ -1,6 +1,6 @@
-# YourDrive - Mega.co.nz Cloud Storage Manager
+# YourDrive - Cloud Storage Manager
 
-YourDrive is a Python application that demonstrates the functionality of the Mega.py library for interacting with Mega.co.nz cloud storage. This application allows you to manage your Mega.co.nz account, including file and folder operations, account information retrieval, and more.
+YourDrive is a cloud storage solution that provides a simple and intuitive interface for storing, managing, and sharing your files. Built with a Flask backend API, it offers robust file management capabilities while abstracting away the underlying storage implementation.
 
 ## Features
 
